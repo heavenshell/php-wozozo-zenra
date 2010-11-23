@@ -1,0 +1,11 @@
+PHP library of zenrize Japanese sentence.
+ - `ZenraBot <https://github.com/sugyan/Zenra>`_
+
+This module is porting from Acme::Zenra(Perl) and pyZenra(Python)
+ - `Acme::Zenra <https://github.com/yusukebe/Acme-Zenra>`_
+ - `pyZenra <https://bitbucket.org/ehren/pyzenra/>`_
+
+System requirement
+  PHP 5.3
+  PHPUnit
+  HTTP_Request2
