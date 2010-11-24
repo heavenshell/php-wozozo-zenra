@@ -61,6 +61,11 @@ use Wozozo\Zenra\Exception;
 class Zenra
 {
     /**
+     * Version.
+     */
+    const VERSION = '0.0.1';
+
+    /**
      * Yahoo! Japan Developer id.
      *
      * @var mixed
