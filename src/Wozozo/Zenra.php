@@ -63,7 +63,7 @@ class Zenra
     /**
      * Version.
      */
-    const VERSION = '0.0.1';
+    const VERSION = '0.0.2';
 
     /**
      * Yahoo! Japan Developer id.
@@ -142,14 +142,9 @@ class Zenra
     {
         $query = array(
             'appid'    => $this->_appId,
-            'sentence' => urlencode($sentence)
+            'sentence' => $sentence
         );
-        $tpl = '%s=%s&';
-        $uri = '';
-        foreach ($query as $k => $v) {
-            $uri .= sprintf($tpl, $k, $v);
-        }
-        $uri      = $this->_baseUrl . '?' . rtrim($uri, '&');
+        $uri      = $this->_baseUrl . '?' . http_build_query($query, null, '&');
         $client   = $this->_client;
         $response = $client->setUrl($uri)
                            ->setMethod(\HTTP_Request2::METHOD_GET)
@@ -162,11 +157,11 @@ class Zenra
         $words = $content->ma_result->word_list->word;
 
         $result = '';
-        foreach ($words as $k => $v) {
-            if ($v->pos->__toString() === $this->_position) {
+        foreach ($words as $word) {
+            if ($word->pos->__toString() === $this->_position) {
                 $result .= $this->_text;
             }
-            $result .= $v->surface;
+            $result .= $word->surface;
         }
 
         return $result;
